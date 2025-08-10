@@ -11,13 +11,13 @@ enabling a modular, scalable, and maintainable codebase.
 This project is built using **Clean Architecture** principles, ensuring clear separation of concerns, maintainability, and testability.
 
 ### Project Structure:
-/NitroSongs
-├── NitroSongs.Api → REST API exposing HTTP endpoints
-├── NitroSongs.ApplicationLayer→ Use cases and application logic
-├── NitroSongs.Domain → Domain entities and core business rules
-├── NitroSongs.Infrastructure → Data access and external services (EF Core)
-├── NitroSongs.Common → DTOs and shared models
-├── NitroSongs.Desktop → Desktop app UI (WinUI)
+/NitroSongs  
+├── NitroSongs.Api → REST API exposing HTTP endpoints  
+├── NitroSongs.ApplicationLayer→ Use cases and application logic  
+├── NitroSongs.Domain → Domain entities and core business rules  
+├── NitroSongs.Infrastructure → Data access and external services (EF Core)  
+├── NitroSongs.Common → DTOs and shared models  
+├── NitroSongs.Desktop → Desktop app UI (WinUI)  
 
 
 ### Layers:
