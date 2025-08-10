@@ -61,4 +61,4 @@ To build a full-featured tool for composers and guitarists, enabling them to:
 - Visual Studio 2022 (recommended)
 - PostgreSQL
 
-Developed by [Henry-cmd365]
+Developed by [Henry-cmd325]
