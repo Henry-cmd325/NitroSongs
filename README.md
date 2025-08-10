@@ -27,7 +27,7 @@ This project is built using **Clean Architecture** principles, ensuring clear se
 - **Infrastructure**: Implements repositories, EF Core configuration, and service integrations.
 - **Api**: Hosts REST endpoints for interacting with the system.
 - **Common**: Holds shared models, response types, and DTOs.
-- **Desktop (WPF)**: A Windows desktop interface for users preferring an offline experience.
+- **Desktop (WinUI)**: A Windows desktop interface for users preferring an offline experience.
 
 ---
 
@@ -59,6 +59,6 @@ To build a full-featured tool for composers and guitarists, enabling them to:
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
 - Visual Studio 2022 (recommended)
-- SQL Server LocalDB (or update the connection string in `appsettings.json`)
+- PostgreSQL
 
 Developed by [Henry-cmd365]
