@@ -1,0 +1,82 @@
+## ===== .NET / Visual Studio =====
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.log
+*.vs/
+.vscode/
+*.dbmdl
+*.bak
+*.tmp
+*.temp
+*.log
+
+## Archivos de configuración local
+appsettings.Development.json
+secrets.json
+
+## ===== Publicaciones =====
+publish/
+**/wwwroot/dist/
+**/wwwroot/css/
+**/wwwroot/js/
+
+## ===== ASP.NET Core =====
+# Logs
+logs/
+*.log
+
+# Archivos generados por runtime
+*.dll
+*.exe
+*.db
+*.sqlite
+
+## ===== Blazor WebAssembly =====
+wwwroot/_framework/
+wwwroot/_content/
+wwwroot/css/app.css
+wwwroot/js/
+**/bin/Release/net*/publish/
+**/obj/Release/net*/blazor/
+**/obj/Release/net*/scopedcss/
+
+## ===== WinUI =====
+# Generados por el diseñador XAML
+*.g.i.cs
+*.g.cs
+*_i.c
+Generated Files/
+*.lref
+*.ide
+
+# Archivos temporales de paquetes
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ===== Paquetes NuGet =====
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+.nuget/
+*.lock.json
+
+## ===== Sistema Operativo =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="NitroSongs.UserControls.Pager.PagerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NitroSongs.UserControls.Pager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" Spacing="10">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="⏮" Click="FirstPage_Click"/>
+            <Button Content="◀" Click="PrevPage_Click"/>
+            <TextBlock Text="{Binding CurrentPage}"/>
+            <TextBlock Text=" / "/>
+            <TextBlock Text="{Binding TotalPages}"/>
+            <Button Content="▶" Click="NextPage_Click"/>
+            <Button Content="⏭" Click="LastPage_Click"/>
+        </StackPanel>
+        <ComboBox Name="ComboSize" SelectionChanged="ComboSize_SelectionChanged">
+            <ComboBoxItem Content="10" IsSelected="True"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="50"/>
+        </ComboBox>
+    </StackPanel>
+</UserControl>

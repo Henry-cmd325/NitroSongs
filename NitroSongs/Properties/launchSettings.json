@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "NitroSongs (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    },
+    "NitroSongs (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
