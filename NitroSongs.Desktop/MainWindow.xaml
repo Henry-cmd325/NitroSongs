@@ -59,13 +59,13 @@
         <!-- Panel inferior con estadísticas -->
         <NavigationView.PaneFooter>
             <StackPanel Margin="16,8">
-                <Border Background="{ThemeResource BackgroundSecondaryColor}" 
+                <Border Background="{ThemeResource BackgroundSecondaryBrush}" 
                   CornerRadius="8" Padding="12">
                     <StackPanel>
                         <TextBlock Text="ESTADÍSTICAS" 
                              FontSize="12" 
                              FontWeight="SemiBold"
-                             Foreground="{ThemeResource ForegroundSecondaryColor}"
+                             Foreground="{ThemeResource ForegroundSecondaryBrush}"
                              Margin="0,0,0,8"/>
 
                         <Grid>

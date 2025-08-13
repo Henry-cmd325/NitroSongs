@@ -16,9 +16,11 @@
     <None Remove="appsettings.json" />
     <None Remove="Dictionaries\Resources\Brush.xaml" />
     <None Remove="Dictionaries\Resources\Colors.xaml" />
+    <None Remove="Dictionaries\Resources\Styles.xaml" />
     <None Remove="Dictionaries\Styles\Buttons.xaml" />
     <None Remove="Dictionaries\Styles\Lists.xaml" />
     <None Remove="Dictionaries\Styles\Text.xaml" />
+    <None Remove="Modules\Songs\Views\EditSongPage.xaml" />
     <None Remove="Modules\Songs\Views\SongsPage.xaml" />
     <None Remove="UserControls\PagerControl.xaml" />
   </ItemGroup>
@@ -78,6 +80,18 @@
 	  <Content Include="appsettings.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Dictionaries\Resources\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Modules\Songs\Views\EditSongPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 
 	<ItemGroup>

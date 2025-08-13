@@ -27,14 +27,14 @@ namespace NitroSongs.UserControls.Pager
             DataContext = this;
         }
 
-        public int CurrentPage
+        public int PageNumber
         {
-            get => (int)GetValue(CurrentPageProperty);
-            set => SetValue(CurrentPageProperty, value);
+            get => (int)GetValue(PageNumberProperty);
+            set => SetValue(PageNumberProperty, value);
         }
 
-        public static readonly DependencyProperty CurrentPageProperty =
-            DependencyProperty.Register(nameof(CurrentPage), typeof(int), typeof(PagerControl), new PropertyMetadata(1));
+        public static readonly DependencyProperty PageNumberProperty =
+            DependencyProperty.Register(nameof(PageNumber), typeof(int), typeof(PagerControl), new PropertyMetadata(1));
 
         public int TotalPages
         {
@@ -48,15 +48,15 @@ namespace NitroSongs.UserControls.Pager
         public event EventHandler<PagerParametersDto>? PageChanged;
 
         private void FirstPage_Click(object sender, RoutedEventArgs e) => ChangePage(1);
-        private void PrevPage_Click(object sender, RoutedEventArgs e) => ChangePage(Math.Max(1, CurrentPage - 1));
-        private void NextPage_Click(object sender, RoutedEventArgs e) => ChangePage(Math.Min(TotalPages, CurrentPage + 1));
+        private void PrevPage_Click(object sender, RoutedEventArgs e) => ChangePage(Math.Max(1, PageNumber - 1));
+        private void NextPage_Click(object sender, RoutedEventArgs e) => ChangePage(Math.Min(TotalPages, PageNumber + 1));
         private void LastPage_Click(object sender, RoutedEventArgs e) => ChangePage(TotalPages);
 
         private void ChangePage(int newPage)
         {
-            if (newPage != CurrentPage)
+            if (newPage != PageNumber)
             {
-                CurrentPage = newPage;
+                PageNumber = newPage;
 
                 string size = "10";
                 if (ComboSize.SelectedItem is ComboBoxItem item)
@@ -75,7 +75,7 @@ namespace NitroSongs.UserControls.Pager
                 size = item.Content?.ToString();
             }
 
-            PageChanged?.Invoke(this, new PagerParametersDto() { Page = CurrentPage, Size = Convert.ToInt16(size) });
+            PageChanged?.Invoke(this, new PagerParametersDto() { Page = PageNumber, Size = Convert.ToInt16(size) });
         }
     }
 }

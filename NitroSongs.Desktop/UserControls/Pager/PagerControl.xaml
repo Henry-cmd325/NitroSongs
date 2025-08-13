@@ -12,7 +12,7 @@
         <StackPanel Orientation="Horizontal" Spacing="8">
             <Button Content="⏮" Click="FirstPage_Click"/>
             <Button Content="◀" Click="PrevPage_Click"/>
-            <TextBlock Text="{Binding CurrentPage}"/>
+            <TextBlock Text="{Binding PageNumber}"/>
             <TextBlock Text=" / "/>
             <TextBlock Text="{Binding TotalPages}"/>
             <Button Content="▶" Click="NextPage_Click"/>

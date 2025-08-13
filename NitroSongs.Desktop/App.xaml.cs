@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using NitroSongs.Modules.Songs.ViewModels;
+using NitroSongs.Navigation;
 using NitroSongs.Services;
 using NitroSongs.Services.Songs;
 using System;
@@ -42,8 +43,11 @@ namespace NitroSongs
                 services.Configure<Configuration>(config.GetSection("Urls"));
                 services.AddHttpClient();
 
-                //Services
+                //Global Services
                 services.AddSingleton<ApiService>();
+                services.AddSingleton<INavigationService, NavigationService>();
+                
+                //Services
                 services.AddTransient<ISongService, SongsService>();
 
                 //ViewModels
@@ -62,7 +66,7 @@ namespace NitroSongs
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            _window = new MainWindow();
+            _window = new MainWindow(AppHost.Services.GetRequiredService<INavigationService>());
             _window.Activate();
         }
     }

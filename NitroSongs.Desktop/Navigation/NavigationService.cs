@@ -4,20 +4,27 @@ namespace NitroSongs.Navigation
 {
     public class NavigationService : INavigationService
     {
-        private readonly Frame _frame;
+        private Frame? _frame;
 
-        public NavigationService(Frame frame)
+        public void Initialize(Frame frame)
         {
             _frame = frame;
         }
 
-        public void NavigateTo<TPage>() where TPage : Page
+        public void NavigateTo<TPage>(object? parameters = default) where TPage : Page
         {
-            _frame.Navigate(typeof(TPage));
+            if (_frame == null) return;
+
+            if (parameters != default)
+                _frame.Navigate(typeof(TPage), parameters);
+            else
+                _frame.Navigate(typeof(TPage));
         }
 
         public void GoBack()
         {
+            if (_frame == null) return;
+
             if (_frame.CanGoBack)
                 _frame.GoBack();
         }

@@ -145,7 +145,8 @@
                   ItemsSource="{x:Bind ViewModel.Songs, Mode=OneWay}"
                   ItemTemplate="{StaticResource SongItemTemplate}"
                   SelectionMode="None"
-                  IsItemClickEnabled="True">
+                  IsItemClickEnabled="True"
+                  ItemClick="SongsGridView_ItemClick">
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Orientation="Horizontal"
@@ -160,7 +161,7 @@
 
         <!-- Pager siempre abajo -->
         <pager:PagerControl Grid.Row="3"
-                            CurrentPage="{x:Bind ViewModel.PageIndex, Mode=TwoWay}"
+                            PageNumber="{x:Bind ViewModel.PageNumber, Mode=TwoWay}"
                             TotalPages="{x:Bind ViewModel.TotalPages, Mode=OneWay}"
                             PageChanged="Pager_PageChanged"/>
     </Grid>

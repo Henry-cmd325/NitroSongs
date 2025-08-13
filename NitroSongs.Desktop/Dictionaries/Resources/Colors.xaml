@@ -7,8 +7,8 @@
     <SolidColorBrush x:Key="BackgroundPrimaryBrush" Color="#141420"></SolidColorBrush>
     <SolidColorBrush x:Key="ForegroundPrimaryBrush" Color="#cdd6f4"></SolidColorBrush>
     
-    <SolidColorBrush x:Key="BackgroundSecondaryColor" Color="#242431"></SolidColorBrush>
-    <SolidColorBrush x:Key="ForegroundSecondaryColor" Color="#8e94ad"></SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundSecondaryBrush" Color="#242431"></SolidColorBrush>
+    <SolidColorBrush x:Key="ForegroundSecondaryBrush" Color="#8e94ad"></SolidColorBrush>
     
     <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="#303041"></SolidColorBrush>
     <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#454554"></SolidColorBrush>

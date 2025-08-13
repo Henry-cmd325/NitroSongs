@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using NitroSongs.Modules.Songs.ViewModels;
 using NitroSongs.Modules.Songs.Views;
+using NitroSongs.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -28,9 +29,14 @@ namespace NitroSongs
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly INavigationService _navigationService;
+        public MainWindow(INavigationService navigationService)
         {
             InitializeComponent();
+
+            _navigationService = navigationService;
+            _navigationService.Initialize(ContentFrame);
+
             SetupEventHandlers();
         }
 
@@ -48,7 +54,7 @@ namespace NitroSongs
                 switch (tag)
                 {
                     case "Home":
-                        ContentFrame.Navigate(typeof(SongsPage));
+                        _navigationService.NavigateTo<SongsPage>();
                         break;
                 }
             }

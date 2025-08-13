@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using NitroSongs.Common;
+using NitroSongs.Common.Dtos;
 using NitroSongs.Modules.Songs.ViewModels;
 using NitroSongs.UserControls.Pager.Dtos;
 
@@ -39,6 +40,12 @@ namespace NitroSongs.Modules.Songs.Views
         private async void Pager_PageChanged(object sender, PagerParametersDto parameters)
         {
             await ViewModel.LoadSongsCommand.ExecuteAsync(parameters);
+        }
+
+        private void SongsGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is SongDto song)
+                ViewModel.SongClickedCommand.Execute(song);
         }
     }
 }

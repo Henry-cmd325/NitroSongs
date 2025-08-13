@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="NitroSongs.Modules.Songs.Views.EditSongPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NitroSongs.Modules.Songs.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ChordButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="#252730"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="#2b3544"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="{StaticResource BackgroundSecondaryBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Margin="20,20,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Title and Artist -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="15">
+                <TextBox x:Name="TitleTextBox" 
+                         Text="Mi Canción" 
+                         Background="{StaticResource BackgroundPrimaryBrush}" 
+                         Foreground="{StaticResource ForegroundSecondaryBrush}"
+                         BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                         CornerRadius="8"
+                         Padding="12,8"
+                         MinWidth="150"
+                         FontSize="14"/>
+
+                <TextBox x:Name="ArtistTextBox" 
+                         Text="Artista" 
+                         Background="{StaticResource BackgroundPrimaryBrush}" 
+                         Foreground="{StaticResource ForegroundSecondaryBrush}"
+                         BorderBrush="{StaticResource CardStrokeColorDefaultBrush}"
+                         CornerRadius="8"
+                         Padding="12,8"
+                         MinWidth="150"
+                         FontSize="14"/>
+            </StackPanel>
+
+            <!-- Action Buttons -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                <Button x:Name="ViewButton" 
+                        Content="Ver" 
+                        Background="#475569" 
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        CornerRadius="6"
+                        Padding="16,8"
+                        FontSize="14"/>
+
+                <Button x:Name="EditButton" 
+                        Content="Editar" 
+                        Background="#3b82f6" 
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        CornerRadius="6"
+                        Padding="16,8"
+                        FontSize="14"/>
+
+                <Button x:Name="CreateButton" 
+                        Content="Crear" 
+                        Background="#475569" 
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        CornerRadius="6"
+                        Padding="16,8"
+                        FontSize="14"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20,0,20,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Panel - Chords -->
+            <Border Grid.Column="0" 
+                    Background="{StaticResource BackgroundPrimaryBrush}" 
+                    CornerRadius="12"
+                    Margin="0,0,15,0">
+
+                <ScrollViewer>
+                    <StackPanel Margin="20">
+                        <!-- Acordes Header -->
+                        <TextBlock Text="Acordes" 
+                                   Foreground="White" 
+                                   FontSize="18" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Arrastra los acordes a la letra" 
+                                   Foreground="#94a3b8" 
+                                   FontSize="12" 
+                                   Margin="0,0,0,15"/>
+
+                        <!-- Show Diagrams Toggle -->
+                        <StackPanel Orientation="Horizontal" Spacing="0" Margin="0,0,0,10">
+                            <ToggleSwitch x:Name="ShowDiagramsToggle" 
+                                          IsOn="True"
+                                          Foreground="#94a3b8"
+                                          Width="15"/>
+                            <TextBlock Text="Mostrar diagramas" 
+                                       Foreground="#94a3b8" 
+                                       FontSize="12" 
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- Mayores -->
+                        <TextBlock Text="Mayores" 
+                                   Foreground="#3b82f6" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,10"/>
+
+                        <Grid Margin="0,0,0,20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Row 1 -->
+                            <Button Grid.Row="0" Grid.Column="0" Content="C" Style="{StaticResource ChordButtonStyle}" Margin="0,0,5,5"/>
+                            <Button Grid.Row="0" Grid.Column="1" Content="D" Style="{StaticResource ChordButtonStyle}" Margin="2.5,0,2.5,5"/>
+                            <Button Grid.Row="0" Grid.Column="2" Content="E" Style="{StaticResource ChordButtonStyle}" Margin="5,0,0,5"/>
+
+                            <!-- Row 2 -->
+                            <Button Grid.Row="1" Grid.Column="0" Content="F" Style="{StaticResource ChordButtonStyle}" Margin="0,2.5,5,2.5"/>
+                            <Button Grid.Row="1" Grid.Column="1" Content="G" Style="{StaticResource ChordButtonStyle}" Margin="2.5,2.5,2.5,2.5"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="A" Style="{StaticResource ChordButtonStyle}" Margin="5,2.5,0,2.5"/>
+
+                            <!-- Row 3 -->
+                            <Button Grid.Row="2" Grid.Column="0" Content="B" Style="{StaticResource ChordButtonStyle}" Margin="0,5,5,0"/>
+                        </Grid>
+
+                        <!-- Menores -->
+                        <TextBlock Text="Menores" 
+                                   Foreground="#3b82f6" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,10"/>
+
+                        <Grid Margin="0,0,0,20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Row="0" Grid.Column="0" Content="Cm" Style="{StaticResource ChordButtonStyle}" Margin="0,0,5,5"/>
+                            <Button Grid.Row="0" Grid.Column="1" Content="Dm" Style="{StaticResource ChordButtonStyle}" Margin="2.5,0,2.5,5"/>
+                            <Button Grid.Row="0" Grid.Column="2" Content="Em" Style="{StaticResource ChordButtonStyle}" Margin="5,0,0,5"/>
+
+                            <Button Grid.Row="1" Grid.Column="0" Content="Fm" Style="{StaticResource ChordButtonStyle}" Margin="0,2.5,5,2.5"/>
+                            <Button Grid.Row="1" Grid.Column="1" Content="Gm" Style="{StaticResource ChordButtonStyle}" Margin="2.5,2.5,2.5,2.5"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="Am" Style="{StaticResource ChordButtonStyle}" Margin="5,2.5,0,2.5"/>
+
+                            <Button Grid.Row="2" Grid.Column="0" Content="Bm" Style="{StaticResource ChordButtonStyle}" Margin="0,5,5,0"/>
+                        </Grid>
+
+                        <!-- Séptimas -->
+                        <TextBlock Text="Séptimas" 
+                                   Foreground="#3b82f6" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,10"/>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Row="0" Grid.Column="0" Content="C7" Style="{StaticResource ChordButtonStyle}" Margin="0,0,5,5"/>
+                            <Button Grid.Row="0" Grid.Column="1" Content="D7" Style="{StaticResource ChordButtonStyle}" Margin="2.5,0,2.5,5"/>
+                            <Button Grid.Row="0" Grid.Column="2" Content="E7" Style="{StaticResource ChordButtonStyle}" Margin="5,0,0,5"/>
+
+                            <Button Grid.Row="1" Grid.Column="0" Content="F7" Style="{StaticResource ChordButtonStyle}" Margin="0,5,5,0"/>
+                            <Button Grid.Row="1" Grid.Column="1" Content="G7" Style="{StaticResource ChordButtonStyle}" Margin="2.5,5,2.5,0"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="A7" Style="{StaticResource ChordButtonStyle}" Margin="5,5,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Center Panel - Lyrics Editor -->
+            <Border Grid.Column="1" 
+                    Background="{StaticResource BackgroundPrimaryBrush}"
+                    CornerRadius="12"
+                    Margin="0,0,15,0">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Editor Header -->
+                    <TextBlock Grid.Row="0"
+                               Text="Editor de Letra" 
+                               Foreground="White" 
+                               FontSize="18" 
+                               FontWeight="SemiBold" 
+                               Margin="20,20,20,15"/>
+
+                    <!-- Tip -->
+                    <Border Grid.Row="1" 
+                            Background="#1e293b" 
+                            CornerRadius="8" 
+                            Margin="20,0,20,15">
+                        <StackPanel Orientation="Horizontal" Spacing="8" Margin="15,12">
+                            <TextBlock Text="💡" FontSize="14"/>
+                            <TextBlock Foreground="#9ca3af" FontSize="12">
+                                <Run FontWeight="SemiBold">Tip:</Run>
+                                <Run Text=" Arrastra los acordes desde el panel izquierdo hasta donde quieras colocarlos en la letra. Los acordes aparecerán justo encima de la palabra donde los sueltes."/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Lyrics Content -->
+                    <ScrollViewer Grid.Row="2" Margin="20,0,20,20">
+                        <StackPanel x:Name="LyricsContainer">
+
+                            <!-- Verse 1 -->
+                            <TextBlock Text="Verse 1:" 
+                                       Foreground="White" 
+                                       FontSize="16" 
+                                       FontWeight="SemiBold" 
+                                       Margin="0,0,0,15"/>
+
+                            <!-- First Line with Chords -->
+                            <StackPanel Margin="0,0,0,10">
+                                <!-- Chord Line -->
+                                <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,5">
+                                    <Border Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            Padding="8,4"
+                                            Margin="0,0,80,0">
+                                        <TextBlock Text="C" 
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
+                                    <Border Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            Padding="8,4">
+                                        <TextBlock Text="G" 
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Lyrics Line -->
+                                <TextBlock Text="Esta es la primera línea de mi canción" 
+                                           Foreground="#e2e8f0" 
+                                           FontSize="14" 
+                                           FontFamily="Consolas"/>
+                            </StackPanel>
+
+                            <!-- Second Line with Chord -->
+                            <StackPanel Margin="0,0,0,20">
+                                <!-- Chord Line -->
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <Border Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            Padding="8,4"
+                                            Margin="0,0,0,0">
+                                        <TextBlock Text="Am" 
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Lyrics Line -->
+                                <TextBlock Text="Y esta es la segunda línea con más letra" 
+                                           Foreground="#e2e8f0" 
+                                           FontSize="14" 
+                                           FontFamily="Consolas"/>
+                            </StackPanel>
+
+                            <!-- Chorus -->
+                            <TextBlock Text="Chorus:" 
+                                       Foreground="White" 
+                                       FontSize="16" 
+                                       FontWeight="SemiBold" 
+                                       Margin="0,20,0,15"/>
+
+                            <!-- Chorus Line with Chords -->
+                            <StackPanel Margin="0,0,0,10">
+                                <!-- Chord Line -->
+                                <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,5">
+                                    <Border Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            Padding="8,4"
+                                            Margin="0,0,60,0">
+                                        <TextBlock Text="F" 
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
+                                    <Border Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            Padding="8,4">
+                                        <TextBlock Text="C" 
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Lyrics Line -->
+                                <TextBlock Text="Este es el coro que todos cantarán" 
+                                           Foreground="#e2e8f0" 
+                                           FontSize="14" 
+                                           FontFamily="Consolas"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <!-- Right Panel - Text Mode -->
+            <Border Grid.Column="2" 
+                    Background="#334155" 
+                    CornerRadius="12"
+                    Width="200"
+                    Visibility="Collapsed">
+
+                <StackPanel Margin="20">
+                    <TextBlock Text="Modo Texto" 
+                               Foreground="White" 
+                               FontSize="16" 
+                               FontWeight="SemiBold" 
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Page>

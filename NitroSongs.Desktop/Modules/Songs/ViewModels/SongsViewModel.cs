@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml.Controls;
 using NitroSongs.Common.Dtos;
+using NitroSongs.Modules.Songs.Views;
+using NitroSongs.Navigation;
 using NitroSongs.Services.Songs;
 using NitroSongs.UserControls.Pager.Dtos;
 using System;
@@ -16,20 +19,21 @@ namespace NitroSongs.Modules.Songs.ViewModels
     public partial class SongsViewModel : ObservableObject
     {
         private readonly ISongService _service;
-
+        private readonly INavigationService _navigation;
         public ObservableCollection<SongDto> Songs { get; set; } = [];
 
         [ObservableProperty]
         private bool isLoading;
 
         [ObservableProperty]
-        private int pageIndex = 1;
+        private int pageNumber;
 
         [ObservableProperty]
-        private int totalPages = 1;
-        public SongsViewModel(ISongService service)
+        private int totalPages;
+        public SongsViewModel(ISongService service, INavigationService navigation)
         {
             _service = service;
+            _navigation = navigation;
         }
 
         [RelayCommand]
@@ -42,13 +46,14 @@ namespace NitroSongs.Modules.Songs.ViewModels
                 datos ??= new PagerParametersDto { Page = 1, Size = 10 };
 
                 var songs = await _service.GetSongs(datos.Page, datos.Size);
-
+                PageNumber = songs.PageNumber;
+                TotalPages = songs.TotalPages;
                 Songs.Clear();
 
                 foreach (var song in songs.Items)
                 {
                     Songs.Add(song);
-                }    
+                }
             }
             catch (Exception ex)
             {
@@ -58,6 +63,14 @@ namespace NitroSongs.Modules.Songs.ViewModels
             {
                 IsLoading = false;
             }
+        }
+
+        [RelayCommand]
+        public void SongClicked(SongDto clickedSong) 
+        {
+            if (clickedSong is null) return;
+            
+            _navigation.NavigateTo<EditSongPage>(clickedSong.Id);
         }
     }
 }
