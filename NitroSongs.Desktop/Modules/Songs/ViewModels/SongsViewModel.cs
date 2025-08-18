@@ -70,7 +70,7 @@ namespace NitroSongs.Modules.Songs.ViewModels
         {
             if (clickedSong is null) return;
             
-            _navigation.NavigateTo<EditSongPage>(clickedSong.Id);
+            _navigation.NavigateTo<SongViewerPage>(clickedSong);
         }
     }
 }

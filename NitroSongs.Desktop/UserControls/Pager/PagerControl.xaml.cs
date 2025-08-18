@@ -61,7 +61,7 @@ namespace NitroSongs.UserControls.Pager
                 string size = "10";
                 if (ComboSize.SelectedItem is ComboBoxItem item)
                 {
-                    size = item.Content?.ToString();
+                    size = item.Content.ToString()!;
                 }
                 PageChanged?.Invoke(this, new PagerParametersDto() { Page = newPage, Size = Convert.ToInt16(size) });
             }
@@ -72,7 +72,7 @@ namespace NitroSongs.UserControls.Pager
             string size = "10";
             if (ComboSize.SelectedItem is ComboBoxItem item)
             {
-                size = item.Content?.ToString();
+                size = item.Content.ToString()!;
             }
 
             PageChanged?.Invoke(this, new PagerParametersDto() { Page = PageNumber, Size = Convert.ToInt16(size) });

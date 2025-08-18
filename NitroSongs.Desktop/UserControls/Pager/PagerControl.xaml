@@ -6,6 +6,7 @@
     xmlns:local="using:NitroSongs.UserControls.Pager"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:PagerControl}"
     mc:Ignorable="d">
 
     <StackPanel Orientation="Horizontal" Spacing="10">

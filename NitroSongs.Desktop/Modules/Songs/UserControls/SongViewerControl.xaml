@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="NitroSongs.Modules.Songs.UserControls.SongViewerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NitroSongs.Modules.Songs.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:SongViewerControl}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Border Background="{StaticResource BackgroundPrimaryBrush}"
+                CornerRadius="20"
+                Margin="15">
+            <TextBlock Text="{Binding Lyrics}" Foreground="White" Padding="20"/>
+        </Border>
+    </Grid>
+</UserControl>

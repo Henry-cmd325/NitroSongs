@@ -52,6 +52,8 @@ namespace NitroSongs
 
                 //ViewModels
                 services.AddTransient<SongsViewModel>();
+                services.AddTransient<SongViewerViewModel>();
+                services.AddTransient<SongEditViewModel>();
 
                 services.AddSingleton<MainWindow>();
             })

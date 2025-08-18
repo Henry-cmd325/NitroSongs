@@ -20,7 +20,7 @@
     <None Remove="Dictionaries\Styles\Buttons.xaml" />
     <None Remove="Dictionaries\Styles\Lists.xaml" />
     <None Remove="Dictionaries\Styles\Text.xaml" />
-    <None Remove="Modules\Songs\Views\EditSongPage.xaml" />
+    <None Remove="Modules\Songs\UserControls\SongEditUserControl.xaml" />
     <None Remove="Modules\Songs\Views\SongsPage.xaml" />
     <None Remove="UserControls\PagerControl.xaml" />
   </ItemGroup>
@@ -83,13 +83,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Page Update="Modules\Songs\UserControls\SongEditUserControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Page Update="Dictionaries\Resources\Styles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Update="Modules\Songs\Views\EditSongPage.xaml">
+	  <Page Update="Modules\Songs\Views\SongViewerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>
@@ -132,6 +138,12 @@
 
 	<ItemGroup>
 	  <Page Update="UserControls\PagerControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Modules\Songs\UserControls\SongViewerControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>
