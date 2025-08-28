@@ -88,7 +88,7 @@
 
             <controls:SongEditUserControl x:Name="EditForm"
                                           x:Load="{x:Bind ViewModel.IsEditMode, Mode=OneWay}"
-                                          Lyrics="{x:Bind ViewModel.Lyrics, Mode=OneWay}"/>
+                                          Lyrics="{x:Bind ViewModel.Lyrics, Mode=TwoWay}"/>
         </Grid>
     </Grid>
 </Page>

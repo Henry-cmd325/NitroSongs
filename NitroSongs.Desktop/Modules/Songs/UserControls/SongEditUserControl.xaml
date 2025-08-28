@@ -8,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:NitroSongs.Modules.Songs.ViewModels"
     d:DataContext="{d:DesignInstance Type=vm:SongEditViewModel}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="self">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,6 +20,14 @@
                 <Setter Property="CornerRadius" Value="8"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+
+            <Style x:Key="ChordBorderDragStyle" TargetType="Border">
+                <Setter Property="Background" Value="#252730"/>
+                <Setter Property="BorderBrush" Value="#2b3544"/>
+                <Setter Property="CornerRadius" Value="8"/>
                 <Setter Property="Height" Value="45"/>
                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
             </Style>
@@ -43,7 +52,7 @@
                        FontSize="18" 
                        FontWeight="SemiBold" 
                        Margin="0,0,0,10"/>
-
+                    
                     <TextBlock Text="Arrastra los acordes a la letra" 
                        Foreground="#94a3b8" 
                        FontSize="12" 
@@ -114,7 +123,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" Content="Cm" Style="{StaticResource ChordButtonStyle}" Margin="0,0,5,5"/>
+                        <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource ChordBorderDragStyle}" Margin="0,0,5,5" 
+                                CanDrag="True" AllowDrop="False" DragStarting="Chord_DragStarting">
+                            <TextBlock Text="Cm"/>
+                        </Border>
                         <Button Grid.Row="0" Grid.Column="1" Content="Dm" Style="{StaticResource ChordButtonStyle}" Margin="2.5,0,2.5,5"/>
                         <Button Grid.Row="0" Grid.Column="2" Content="Em" Style="{StaticResource ChordButtonStyle}" Margin="5,0,0,5"/>
 
@@ -194,9 +206,11 @@
 
                 <!-- Tip -->
                 <Border Grid.Row="1" 
-                Background="#1e293b" 
-                CornerRadius="8" 
-                Margin="20,0,20,15">
+                        Background="#1e293b" 
+                        CornerRadius="8" 
+                        Margin="20,0,20,15"
+                        x:Name="txtTip"
+                        x:Load="{x:Bind ViewModel.IsVisualMode, Mode=OneWay}">    
                     <StackPanel Orientation="Horizontal" Spacing="8" Margin="15,12">
                         <TextBlock Text="💡" FontSize="14"/>
                         <TextBlock Foreground="#9ca3af" FontSize="12">
@@ -207,109 +221,44 @@
                 </Border>
 
                 <!-- Lyrics Content -->
-                <ScrollViewer Grid.Row="2" x:Name="LyricsTextBlock" x:Load="{x:Bind ViewModel.IsVisualMode, Mode=OneWay}"  Margin="20,0,20,20">
-                    <StackPanel x:Name="LyricsContainer">
+                <ScrollViewer Grid.Row="2" x:Name="LyricsScroll" x:Load="{x:Bind ViewModel.IsVisualMode, Mode=OneWay}"  Margin="20,0,20,20">
+                    <ItemsRepeater x:Name="LyricsRepeater" ItemsSource="{x:Bind ViewModel.LyricTokens}">
+                        <ItemsRepeater.Layout>
+                            <StackLayout Orientation="Horizontal"/>
+                        </ItemsRepeater.Layout>
 
-                        <!-- Verse 1 -->
-                        <TextBlock Text="Verse 1:" 
-                           Foreground="White" 
-                           FontSize="16" 
-                           FontWeight="SemiBold" 
-                           Margin="0,0,0,15"/>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="vm:LyricToken">
+                                <Grid AllowDrop="True" DragOver="Token_DragOver" Drop="Token_Drop" Margin="0,0,2,8" Width="16">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="18"/>
+                                    </Grid.RowDefinitions>
 
-                        <!-- First Line with Chords -->
-                        <StackPanel Margin="0,0,0,10">
-                            <!-- Chord Line -->
-                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,5">
-                                <Border Background="#222b3f" 
-                                CornerRadius="4" 
-                                Padding="8,4"
-                                Margin="0,0,80,0">
-                                    <TextBlock Text="C" 
-                                       Foreground="#3b82f6" 
-                                       FontSize="12" 
-                                       FontWeight="SemiBold"/>
-                                </Border>
-                                <Border Background="#222b3f" 
-                                CornerRadius="4" 
-                                Padding="8,4">
-                                    <TextBlock Text="G" 
-                                       Foreground="#3b82f6" 
-                                       FontSize="12" 
-                                       FontWeight="SemiBold"/>
-                                </Border>
-                            </StackPanel>
+                                    <Border Grid.Row="0"
+                                            Background="#222b3f" 
+                                            CornerRadius="4" 
+                                            x:Name="Chord"
+                                            x:Load="{x:Bind HasChord}"
+                                            Width="14"
+                                            Height="10">
+                                        <TextBlock Text="{x:Bind Chord}" 
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#3b82f6" 
+                                                   FontSize="12" 
+                                                   FontWeight="SemiBold"/>
+                                    </Border>
 
-                            <!-- Lyrics Line -->
-                            <TextBlock Text="Esta es la primera línea de mi canción" 
-                               Foreground="#e2e8f0" 
-                               FontSize="14" 
-                               FontFamily="Consolas"/>
-                        </StackPanel>
-
-                        <!-- Second Line with Chord -->
-                        <StackPanel Margin="0,0,0,20">
-                            <!-- Chord Line -->
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                <Border Background="#222b3f" 
-                                CornerRadius="4" 
-                                Padding="8,4"
-                                Margin="0,0,0,0">
-                                    <TextBlock Text="Am" 
-                                       Foreground="#3b82f6" 
-                                       FontSize="12" 
-                                       FontWeight="SemiBold"/>
-                                </Border>
-                            </StackPanel>
-
-                            <!-- Lyrics Line -->
-                            <TextBlock Text="Y esta es la segunda línea con más letra" 
-                               Foreground="#e2e8f0" 
-                               FontSize="14" 
-                               FontFamily="Consolas"/>
-                        </StackPanel>
-
-                        <!-- Chorus -->
-                        <TextBlock Text="Chorus:" 
-                           Foreground="White" 
-                           FontSize="16" 
-                           FontWeight="SemiBold" 
-                           Margin="0,20,0,15"/>
-
-                        <!-- Chorus Line with Chords -->
-                        <StackPanel Margin="0,0,0,10">
-                            <!-- Chord Line -->
-                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,5">
-                                <Border Background="#222b3f" 
-                                CornerRadius="4" 
-                                Padding="8,4"
-                                Margin="0,0,60,0">
-                                    <TextBlock Text="F" 
-                                       Foreground="#3b82f6" 
-                                       FontSize="12" 
-                                       FontWeight="SemiBold"/>
-                                </Border>
-                                <Border Background="#222b3f" 
-                                CornerRadius="4" 
-                                Padding="8,4">
-                                    <TextBlock Text="C" 
-                                       Foreground="#3b82f6" 
-                                       FontSize="12" 
-                                       FontWeight="SemiBold"/>
-                                </Border>
-                            </StackPanel>
-
-                            <!-- Lyrics Line -->
-                            <TextBlock Text="Este es el coro que todos cantarán" 
-                               Foreground="#e2e8f0" 
-                               FontSize="14" 
-                               FontFamily="Consolas"/>
-                        </StackPanel>
-
-                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Text="{x:Bind Text}" HorizontalAlignment="Center" FontFamily="Consolas" FontSize="16"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
                 </ScrollViewer>
 
-                <TextBox Margin="20,0,20,20" x:Name="LyricsTextBox" x:Load="{x:Bind ViewModel.IsTextMode, Mode=OneWay}" Text="{x:Bind Lyrics, Mode=TwoWay}"/>
+                <TextBox Grid.Row="2" Width="auto" Height="auto" IsEnabled="True"
+                         Margin="20,0,20,20" x:Name="LyricsTextBox" x:Load="{x:Bind ViewModel.IsTextMode, Mode=OneWay}" Text="{Binding Lyrics, ElementName=self, Mode=TwoWay}" Foreground="White"/>
             </Grid>
         </Border>
     </Grid>
