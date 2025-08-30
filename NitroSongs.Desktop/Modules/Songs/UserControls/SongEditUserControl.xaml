@@ -231,7 +231,7 @@
                             <DataTemplate x:DataType="vm:LyricToken">
                                 <Grid AllowDrop="True" DragOver="Token_DragOver" Drop="Token_Drop" Margin="0,0,2,8" Width="16">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="20"/>
                                         <RowDefinition Height="18"/>
                                     </Grid.RowDefinitions>
 
@@ -241,7 +241,7 @@
                                             x:Name="Chord"
                                             x:Load="{x:Bind HasChord}"
                                             Width="14"
-                                            Height="10">
+                                            Height="18">
                                         <TextBlock Text="{x:Bind Chord}" 
                                                    HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"

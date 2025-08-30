@@ -15,8 +15,8 @@ namespace NitroSongs.Infrastructure.Persistence.Contexts
         public DbSet<Tone> Tones { get; set; } = default!;
         public DbSet<User> Users { get; set; } = default!;
         public DbSet<UserSong> UserSongs { get; set; } = default!;
-
         public DbSet<Author> Authors { get; set; } = default!;
+        public DbSet<ChordType> ChordTypes { get; set; } = default!;
 
         public NitroSongsDbContext(DbContextOptions<NitroSongsDbContext> options) : base(options)
         {}

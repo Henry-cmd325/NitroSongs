@@ -21,5 +21,7 @@ namespace NitroSongs.Infrastructure.Persistence.Contexts
         public DbSet<User> Users { get; }
         public DbSet<UserSong> UserSongs { get; }
         public DbSet<Author> Authors { get; }
+        public DbSet<ChordType> ChordTypes { get; }
+
     }
 }

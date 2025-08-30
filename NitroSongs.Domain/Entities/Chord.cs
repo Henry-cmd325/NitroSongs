@@ -14,7 +14,9 @@ namespace NitroSongs.Domain.Entities
         public string Name { get; set; } = default!;
         public string CodeEs { get; set; } = default!;
         public string CodeEn { get; set; } = default!;
-        public string ImgUrl { get; set; } = default!;
+        public long ChordTypeId { get; set; } = default!;
+
+        public ChordType ChordType { get; set; } = default!;
         public ICollection<SongChord> SongChords { get; set; } = [];
         public ICollection<ChordTone> ChordTones { get; set; } = [];
         public ICollection<ImageChords> ImageChords { get; set; } = [];

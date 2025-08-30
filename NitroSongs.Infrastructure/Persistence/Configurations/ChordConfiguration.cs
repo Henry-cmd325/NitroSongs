@@ -29,9 +29,13 @@ namespace NitroSongs.Infrastructure.Persistence.Configurations
             builder.Property(c => c.CodeEs)
                 .HasColumnName("code_es")
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(10); 
 
-            builder.HasMany(c => c.SongChords)
+            builder.Property(c => c.ChordTypeId)
+                .HasColumnName("chord_type_id")
+                .IsRequired();
+
+            builder.HasMany(c => c.SongChords) 
                 .WithOne(sc => sc.Chord)
                 .HasForeignKey(sc => sc.ChordId);
 

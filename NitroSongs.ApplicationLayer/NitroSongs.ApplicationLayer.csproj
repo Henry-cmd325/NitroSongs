@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="UseCases\Auth\Login\" />
     <Folder Include="UseCases\Auth\SignUp\" />
+    <Folder Include="UseCases\Chords\" />
     <Folder Include="UseCases\Songs\CreateSong\" />
     <Folder Include="UseCases\Songs\GetSongById\" />
     <Folder Include="UseCases\Songs\UpdateSong\" />
